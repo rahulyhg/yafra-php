@@ -1,0 +1,37 @@
+# language setting
+language: php
+
+php:
+# - 5.3
+# - 5.4
+ - 5.5
+# - 5.6
+# - hhvm
+
+before_install:
+  - sudo mkdir -p /work/yafra-runtime
+  - sudo git clone https://github.com/yafraorg/yafra.git
+  - mkdir -p ~/.composer
+  - pwd
+  - ls
+
+install:
+  - composer self-update
+  - composer update
+
+before_script: 
+  - mkdir -p shippable/testresults
+  - mkdir -p shippable/codecoverage
+  - pwd
+  - ls
+
+script:
+  - sudo ./build-shippable.sh
+  - phpunit --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage
+
+
+after_success:
+   - echo $BUILD_NUMBER
+   - sudo tar cvf /work/yafra-php-build.tar .
+#   - sudo gzip /work/yafra-java-build.tar
+#   - sudo curl -T /work/yafra-java-build.tar.gz -u yafrarel@yafra.org:eoCvvg9J ftp://ftp.yafra.org/
