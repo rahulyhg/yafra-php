@@ -5,6 +5,8 @@
  * Date: 18/11/14
  * Time: 21:58
  */
+require_once __DIR__ .'/../vendor/guzzlehttp/guzzle/src/Client.php';
+
 use GuzzleHttp\Client;
 
 
