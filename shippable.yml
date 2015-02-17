@@ -8,7 +8,21 @@ php:
 # - 5.6
 # - hhvm
 
-before_install:
+services:
+  - mysql
+
+addons:
+  hosts:
+    - example.org
+
+before_script:
+  - sudo apt-get update
+  - sudo apt-get install nginx
+  - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
+  - ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
+  - sudo cp -f config/site-nginx.conf /etc/nginx/sites-enabled/site-nginx.conf
+  - sudo sed -e "s?%BUILD_DIR%?$(pwd)?g" --in-place /etc/nginx/sites-enabled/site-nginx.conf
+  - sudo service nginx start
   - sudo mkdir -p /work/yafra-runtime
   - sudo git clone https://github.com/yafraorg/yafra.git
   - mkdir -p ~/.composer
