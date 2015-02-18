@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit colors="true">
+<phpunit bootstrap="./bootstrap.php" colors="true">
     <testsuites>
-        <testsuite name="MCB PHP server Test Suite">
+        <testsuite name="Yafra PHP server Test Suite">
             <directory>./tests/</directory>
         </testsuite>
     </testsuites>
