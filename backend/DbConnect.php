@@ -19,9 +19,9 @@ class DbConnect {
 		/**
 		 * Database configuration
 		 */
-		$this->dbdsn = 'mysql:host=test.com;dbname=testdb;charset=utf8mb4;';
-		$this->dbuser = 'testuser';
-		$this->dbpwd = 'testpwd';
+		$this->dbdsn = 'mysql:host=localhost;dbname=yafra;charset=utf8mb4;';
+		$this->dbuser = 'yafraadmin';
+		$this->dbpwd = 'yafra';
 	}
 	
 	/**
