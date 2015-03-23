@@ -21,5 +21,13 @@ cd /var/www/html
 sed -i "/dbdsn/s/localhost/$DB_PORT_3306_TCP_ADDR/" backend/DbConnect.php
 composer.phar install --no-dev
 
+echo "if you want the apache rewrite htaccess enable: AllowOverride All"
+# <Directory "/var/www">
+#   AllowOverride All
+# </Directory>
+
 cd
+a2enmod rewrite
 apache2ctl start
+
+echo "access it through http://server/rest/index.php/persons "
