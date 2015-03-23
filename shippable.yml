@@ -44,7 +44,8 @@ before_script:
 
 script:
   - sudo ./build-shippable.sh
-  - phpunit --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage
+  #- phpunit --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage
+  - phpunit --log-junit shippable/testresults/junit.xml
 
 after_script:
   - sudo service apache2 stop

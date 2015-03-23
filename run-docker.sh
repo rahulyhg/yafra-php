@@ -25,6 +25,7 @@ echo "if you want the apache rewrite htaccess enable: AllowOverride All"
 # <Directory "/var/www">
 #   AllowOverride All
 # </Directory>
+sed  '/\[option\]/a Hello World' input
 
 cd
 a2enmod rewrite
