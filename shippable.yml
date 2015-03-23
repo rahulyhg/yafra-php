@@ -11,10 +11,6 @@ php:
 services:
   - mysql
 
-addons:
-  hosts:
-    - example.org
-
 before_install:
   - sudo apt-get update
   - sudo apt-get install nginx
@@ -38,6 +34,8 @@ before_install:
 install:
   - composer self-update
   - composer install
+  - npm install
+  - bower install
 
 
 before_script: 
@@ -50,6 +48,8 @@ script:
   - sudo ./build-shippable.sh
   - phpunit --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage
 
+after_script:
+  - sudo service nginx stop
 
 after_success:
    - echo $BUILD_NUMBER

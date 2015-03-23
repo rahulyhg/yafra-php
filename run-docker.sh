@@ -8,6 +8,7 @@ export SYSADM=$BASENODE/yafra/org.yafra.sysadm
 export WORKNODE=/work/yafra-runtime
 
 cd $PHPNODE
+npm install
 bower install
 cp -r backend /var/www/html
 cp -r rest /var/www/html
