@@ -25,6 +25,7 @@ before_install:
   - sudo git clone https://github.com/yafraorg/yafra.git
   - sudo git clone https://github.com/yafraorg/yafra-database.git
   - cd
+  - cd workspace/src/github.com/yafraorg/yafra-php
   - pwd
 
 install:
