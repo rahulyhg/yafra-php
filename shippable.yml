@@ -15,7 +15,7 @@ addons:
   hosts:
     - example.org
 
-before_script:
+before_install:
   - sudo apt-get update
   - sudo apt-get install nginx
   - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
@@ -23,21 +23,28 @@ before_script:
   - sudo cp -f config/site-nginx.conf /etc/nginx/sites-enabled/site-nginx.conf
   - sudo sed -e "s?%BUILD_DIR%?$(pwd)?g" --in-place /etc/nginx/sites-enabled/site-nginx.conf
   - sudo service nginx start
+  - sudo sh -c 'echo "[mysqld]" > /etc/mysql/conf.d/yafra.cnf'
+  - sudo sh -c 'echo "lower_case_table_names=1" >> /etc/mysql/conf.d/yafra.cnf'
+  - sudo mysqladmin shutdown
+  - sudo su -c "/usr/bin/mysqld_safe > /dev/null 2>&1 &"
   - sudo mkdir -p /work/yafra-runtime
+  - sudo mkdir -p /work/repos
+  - cd /work/repos
   - sudo git clone https://github.com/yafraorg/yafra.git
-  - mkdir -p ~/.composer
+  - sudo git clone https://github.com/yafraorg/yafra-database.git
+  - cd
   - pwd
-  - ls
 
 install:
   - composer self-update
-  - composer update
+  - composer install
+
 
 before_script: 
   - mkdir -p shippable/testresults
   - mkdir -p shippable/codecoverage
+  - sudo -E /work/repos/yafra-database/build-db.sh mysql
   - pwd
-  - ls
 
 script:
   - sudo ./build-shippable.sh
