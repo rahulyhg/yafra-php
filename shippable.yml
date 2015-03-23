@@ -13,12 +13,8 @@ services:
 
 before_install:
   - sudo apt-get update
-  - sudo apt-get install nginx
-  - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
-  - ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
-  - sudo cp -f config/site-nginx.conf /etc/nginx/sites-enabled/site-nginx.conf
-  - sudo sed -e "s?%BUILD_DIR%?$(pwd)?g" --in-place /etc/nginx/sites-enabled/site-nginx.conf
-  - sudo service nginx start
+  - sudo apt-get install apache2 apache2-mpm-prefork apache2-utils libapache2-mod-php5 libapr1 libaprutil1 libpq5
+  - sudo service apache2 start
   - sudo sh -c 'echo "[mysqld]" > /etc/mysql/conf.d/yafra.cnf'
   - sudo sh -c 'echo "lower_case_table_names=1" >> /etc/mysql/conf.d/yafra.cnf'
   - sudo mysqladmin shutdown
@@ -49,7 +45,7 @@ script:
   - phpunit --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage
 
 after_script:
-  - sudo service nginx stop
+  - sudo service apache2 stop
 
 after_success:
    - echo $BUILD_NUMBER

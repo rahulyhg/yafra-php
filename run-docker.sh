@@ -18,6 +18,7 @@ cp index.php /var/www/html
 cp main.css /var/www/html
 
 cd /var/www/html
+sed -i "/dbdsn/s/localhost/$DB_PORT_3306_TCP_ADDR/" backend/DbConnect.php
 composer.phar install --no-dev
 
 cd
