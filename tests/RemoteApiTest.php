@@ -16,17 +16,18 @@ class testRemoteApi extends PHPUnit_Framework_TestCase {
 	{
 		$client = new Client();
 
-		$res = $client->get('http://app.maertplatz-clique.ch/v1/programa');
+		$res = $client->get('http://www.yafra.org/');
 		$this->assertEquals('200', $res->getStatusCode());
 		//print_r($res->getStatusCode());
 
-		try{
+/*		try{
 			$res = $client->get('http://app.maertplatz-clique.ch/v1/blabla');
 			$this->fail("Expected exception not thrown");
 		}catch(Exception $e){
 			//print_r($e->getCode());
 			$this->assertEquals("404",$e->getCode());
 		}
+*/
 	}
 }
 ?>

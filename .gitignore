@@ -14,3 +14,5 @@ nosetests.xml
 
 composer.lock
 vendor
+
+bower_components

@@ -53,10 +53,10 @@ function authenticate(\Slim\Route $route)
  * method GET
  * url /tasks
  */
-$app->get('/users', function () {
+$app->get('/persons', function () {
 	$db = new DbHandler();
 	// fetching all user tasks
-	$result = $db->getAllUsers(30, 1);
+	$result = $db->getAllPersons(100, 1);
 	sendResponse(200, $result);
 });
 

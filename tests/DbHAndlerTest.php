@@ -35,11 +35,11 @@ class DbHandlerTest extends PHPUnit_Framework_TestCase {
 
 	// ------------------------ Users -----------------------------------
 
-	public function testUsers()
+	public function testPersons()
 	{
 		$db = new DbHandler();
 
-		$result = $db->getAllUsers();
+		$result = $db->getAllPersons();
 		$this->assertNotNull($result);
 
 	}

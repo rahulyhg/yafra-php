@@ -1,0 +1,13 @@
+{
+  "name": "yapki-app",
+  "description": "A simple PKI CA web app",
+  "version": "1.0.0",
+  "homepage": "https://github.com/yafraorg",
+  "license": "Apache",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "~3.1.1"
+  },
+  "devDependencies": {
+  }
+}
