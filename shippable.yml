@@ -40,7 +40,9 @@ install:
 before_script: 
   - mkdir -p shippable/testresults
   - mkdir -p shippable/codecoverage
-  - sudo -E /work/repos/yafra-database/build-db.sh mysql
+  - mysql -v -v -p </work/repos/yafra-database/yafradb/dbe_init_mysql.sql
+  - mysql -v -v -p </work/repos/yafra-database/yafradb/dbe_generate_mysql.sql
+  #- sudo -E /work/repos/yafra-database/build-db.sh mysql
   - pwd
 
 script:

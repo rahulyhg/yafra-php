@@ -86,7 +86,7 @@
             <h2>RESTful API demo</h2>
             Just click on the following URL to see a JSON output in your browser window showing a GET REST call.
             <br />
-            <a href="rest/index.php/persons"Get persons from MySQL DB</a>
+            <a href="rest/index.php/persons">Get persons from MySQL DB</a>
         </div>
     </div>
 
