@@ -16,6 +16,7 @@ before_install:
   - sudo apt-get install apache2 apache2-mpm-prefork apache2-utils libapache2-mod-php5 libapr1 libaprutil1 libpq5
   - sudo a2enmod rewrite
   - sudo service apache2 start
+  - sudo mysqladmin password ""
   - sudo sh -c 'echo "[mysqld]" > /etc/mysql/conf.d/yafra.cnf'
   - sudo sh -c 'echo "lower_case_table_names=1" >> /etc/mysql/conf.d/yafra.cnf'
   - sudo mysqladmin shutdown

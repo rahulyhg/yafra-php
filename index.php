@@ -67,18 +67,26 @@
 <!-- Internal Message -->
     <div class="row">
         <div class="col-md-12">
-            <h2>DB access demo</h2>
+            <h2>DB access through plain PHP demo</h2>
             <?php
             require_once 'backend/DbHandler.php';
 				use backend\DbHandler as DbHandler;
             $db = new DbHandler();
-            $result = $db->getMessages(5, 0); // fetching all events
-            foreach ($result as $msg) {
+            $result = $db->getAllPersons(); // fetching all events
+            foreach ($result as $pers) {
                 echo '<ul>';
-                echo '<li>' . $msg["msgdate"] . ": " . $msg["msgtext"] . '</li>';
+                echo '<li>' . $pers["name"] . ": " . $pers["firstname"] . '</li>';
                 echo '</ul>';
             }
             ?>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>RESTful API demo</h2>
+            Just click on the following URL to see a JSON output in your browser window showing a GET REST call.
+            <br />
+            <a href="rest/index.php/persons"Get persons from MySQL DB</a>
         </div>
     </div>
 
