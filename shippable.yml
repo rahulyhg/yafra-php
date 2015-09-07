@@ -65,5 +65,6 @@ after_success:
   - echo $BUILD_NUMBER
   - sudo tar cvf /work/yafra-php-build.tar .
   - sudo gzip /work/yafra-php-build.tar
+  - sudo -E cp /work/yafra-php-build.tar /work/yafra-php-build-$BUILD_NUMBER.tar
   - sudo curl -T /work/yafra-php-build-$BUILD_NUMBER.tar.gz -u yafraorg:$BINTRAYAPI https://api.bintray.com/content/yafraorg/yafra-distribution/yafra-php/v1.0/
   - sudo curl -T /work/yafra-php-build.tar.gz -u yafrarel@yafra.org:$YAFRAFTPPWD ftp://ftp.yafra.org/
